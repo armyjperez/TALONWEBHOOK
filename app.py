@@ -50,9 +50,10 @@ def talon_webhook():
 
         data = request.get_json(force=True)
 
-        zip_code = data.get('zip', '').strip()
-        interest = data.get('interest', '').strip().lower()
-        evp = data.get('evp_priority', 'career').strip().lower()
+        zip_code = str(data.get('zip') or '').strip()
+        interest = str(data.get('interest') or '').strip().lower()
+        evp = str(data.get('evp_priority') or 'career').strip().lower()
+
 
         # Defensive Defaults
         if not zip_code:
